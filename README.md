@@ -77,7 +77,6 @@ These are all variables
 |`force_install`|Set to `true` if you want to re-install `cloudflared`. By default the assumption is that `cloudflared` is running as a service and automatically auto-updates.|`false`|
 |`tunnels`|[Mandatory] List of services, each one defining [Cloudflare parameters](#cloudflare-parameters)|-|
 |`do_legacy_cleanup`|Due to the changes of switching to [systemd-unit-template] you may need to cleanup the "legacy" stuff, if you used the role before.|`false`|
-|`remove_unmanaged_tunnels`|Remove services and configurations for tunnels not defined in `tunnels`|`true`|
 
 ### Cloudflare parameters
 
@@ -107,6 +106,7 @@ tunnels:
 |`proto_loglevel`|Specifies the verbosity of the HTTP/2 protocol logging. Any value below 'warn' is noisy and should only be used to debug low - level performance issues and protocol quirks - see [docu](https://developers.cloudflare.com/argo-tunnel/reference/arguments/#proto-loglevel)|`info`|
 |`retries`|Maximum number of retries for connection/protocol errors. Retries use exponential backoff (retrying at 1, 2, 4, 8, 16 seconds by default) so increasing this value significantly is not recommended - see [docu](https://developers.cloudflare.com/argo-tunnel/reference/arguments/#retries)|`5`|
 |`no_chunked_encoding`|Disables chunked transfer encoding; useful if you are running a WSGI server - see [docu](https://developers.cloudflare.com/argo-tunnel/reference/arguments/#no-chunked-encoding)|`false`|
+|`no_logfile`|Disables writing a logfile for cloudflared - it will still log to the journal|`false`|
 
 ### SSH Client config
 
