@@ -5,8 +5,9 @@
   register: tunnel_configs
 - name: Remove old tunnel configs
   debug:
-    msg: "{{ item }}"
+    msg: "{{ item | basename | splitext | first }}"
   loop: "{{ tunnel_configs.files }}"
+  when: (item | basename | splitext | first) in tunnels
 - name: Create config file for service '{{ item.key }}'
   template:
     src: config.yml.j2
